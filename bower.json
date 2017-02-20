@@ -1,0 +1,11 @@
+{
+  "name": "nerdy-stack-client",
+  "version": "1.0.0-Alpha.1",
+  "author": "Saleh A Motaal <saleh@grasppe.com>",
+  "description": "Front-end client module of NerdyStack by thenerdyguy",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "polymer": "2.0-preview"
+  }
+}

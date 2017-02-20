@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>NerdyStack</title>
+    <meta name="description" content="Front-end client module of NerdyStack by thenerdyguy">
+    <script>
+        // Load webcomponentsjs polyfill if browser does not support native Web Components
+
+        (function () {
+            const customElementsSupported = 'registerElement' in document;
+            const htmlImportsSupported = 'import' in HTMLLinkElement.prototype;
+            const htmlTemplatesSupported = HTMLTemplateElement && HTMLTemplateElement.prototype && 'content' in
+                HTMLTemplateElement.prototype;
+            const webComponentsSupported = customElementsSupported && htmlImportsSupported &&
+                htmlTemplatesSupported;
+
+            const dispatchReady = () => window.HTMLImports || (document.dispatchEvent(
+                new CustomEvent('WebComponentsReady', {
+                    bubbles: true
+                })
+            ) && console.info('Dispatching Event: WebComponentsReady'));
+
+            const loadPolyfill = () => document.head.appendChild(Object.assign(document
+                .createElement(
+                    'script'), {
+                    async: true,
+                    src: 'bower_components/webcomponentsjs/webcomponents-lite.js',
+                    onload: dispatchReady,
+                })) && console.info('Using Polyfill: WebComponents');
+
+            webComponentsSupported ? dispatchReady() : loadPolyfill();
+        }());
+
+    </script>
+    <!--<link rel="import" href="./bower_components/polymer/polymer.html" />-->
+    <!--<link rel="import" href="./bower_components/polymer/polymer-element.html" />-->
+    <!--<link rel="import" href="./components/hello-world.html" />-->
+</head>
+
+<body>
+    <script src="app.js" defer></script>
+</body>
+
+</html>
